@@ -7,8 +7,12 @@ import dashboardRoutes from './routes/dashboard.routes';
 import customerRoutes from './routes/customer.routes';
 import settingsRoutes from './routes/settings.routes';
 
-// Load from root .env
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+// Load environment variables
+dotenv.config(); // Default behavior: looks for .env in the current working directory
+// Fallback for local development if .env is in the root Selah directory
+if (!process.env.SUPABASE_URL) {
+  dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+}
 
 const app = express();
 const port = process.env.PORT || 5000;
