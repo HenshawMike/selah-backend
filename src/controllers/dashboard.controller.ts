@@ -180,3 +180,20 @@ export const createManualOrder = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to create manual order' });
   }
 };
+export const updateOrderStatus = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
+  try {
+    const { error } = await supabase
+      .from('orders')
+      .update({ status })
+      .eq('id', id);
+
+    if (error) throw error;
+    res.sendStatus(200);
+  } catch (err) {
+    console.error('Update Order Status Error:', err);
+    res.status(500).json({ error: 'Failed to update order status' });
+  }
+};
