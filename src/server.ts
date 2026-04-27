@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
-import webhookRoutes from './routes/webhook.routes';
+// import webhookRoutes from './routes/webhook.routes';
 import dashboardRoutes from './routes/dashboard.routes';
 import customerRoutes from './routes/customer.routes';
 import settingsRoutes from './routes/settings.routes';
@@ -24,7 +24,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'selah-backend' });
 });
 
-app.use('/webhook', webhookRoutes);
+// app.use('/webhook', webhookRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/customers', customerRoutes);
 app.use('/api/settings', settingsRoutes);

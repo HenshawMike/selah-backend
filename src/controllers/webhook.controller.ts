@@ -6,6 +6,7 @@ import { extractQuantity } from '../utils/parser';
 
 // WhatsApp Verification
 export const verifyWebhook = (req: Request, res: Response): void => {
+  /*
   const verify_token = process.env.WHATSAPP_VERIFY_TOKEN;
 
   const mode = req.query['hub.mode'] as string | undefined;
@@ -22,9 +23,12 @@ export const verifyWebhook = (req: Request, res: Response): void => {
   } else {
     res.status(400).send('Missing mode or token');
   }
+  */
+  res.status(503).send('WhatsApp integration disabled');
 };
 
 export const receiveMessage = async (req: Request, res: Response): Promise<void> => {
+  /*
   const body = req.body;
 
   // WhatsApp payload check
@@ -65,4 +69,6 @@ export const receiveMessage = async (req: Request, res: Response): Promise<void>
   } else {
     res.sendStatus(404);
   }
+  */
+  res.status(503).send('WhatsApp integration disabled');
 };
