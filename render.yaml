@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: selah-backend
+    runtime: docker # Use the Dockerfile we just created
+    rootDir: backend # Point to the backend folder
+    plan: free # Use the free plan by default
+    region: ohio # Adjust if needed
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false # Requires manual entry in Render UI
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: WHATSAPP_VERIFY_TOKEN
+        sync: false
+      - key: WHATSAPP_ACCESS_TOKEN
+        sync: false
+      - key: PORT
+        value: 5000
